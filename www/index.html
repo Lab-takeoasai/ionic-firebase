@@ -14,6 +14,16 @@
   <!-- Firebase -->
   <script src="lib/angularfire/dist/angularfire.min.js"></script>
   <script src="lib/firebase/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBnkOjE1AmKaqKLF6YmlMC2c3sF3sOByG0",
+    authDomain: "ionic-firebase-1266a.firebaseapp.com",
+    databaseURL: "https://ionic-firebase-1266a.firebaseio.com",
+    storageBucket: "ionic-firebase-1266a.appspot.com",
+  };
+  firebase.initializeApp(config);
+  </script>
 
   <!-- cordova script (this will be a 404 during development) -->
   <script src="lib/ngCordova/dist/ng-cordova.js"></script>
@@ -21,10 +31,6 @@
 
   <!-- your app's js -->
   <script src="js/app.dist.js"></script>
-
-  <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
-
-
 </head>
 
 <body ng-app="starter">
