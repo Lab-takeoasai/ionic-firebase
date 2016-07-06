@@ -2,7 +2,7 @@
 
 export default class DashboardController {
 
-  public chats: any[];
+  public chats: AngularFireArray;
   constructor(
     $scope,
     $firebaseArray: AngularFireArrayService,
@@ -10,5 +10,9 @@ export default class DashboardController {
     "ngInject";
     const ref = $window.firebase.database().ref();
     this.chats = $firebaseArray(ref);
+  }
+
+  public add(name: string, body: string) {
+    this.chats.$add({ name: name, text: body });
   }
 }
