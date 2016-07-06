@@ -19,6 +19,8 @@ module.exports = function (config) {
       'www/lib/ionic/js/ionic.bundle.min.js',
       'www/lib/ngCordova/dist/ng-cordova.js',
       'www/lib/angular-mocks/angular-mocks.js',
+      'www/lib/firebase/firebase.js',
+      'www/lib/angularfire/dist/angularfire.min.js',
       'src/**/*.spec.ts'
     ],
 
