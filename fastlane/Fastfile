@@ -1,0 +1,50 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "1.95.0"
+
+default_platform :android
+
+platform :ios do
+  PLIST_PATH = "./platforms/ios/HelloCordova/HelloCordova-info.plist"
+
+  before_all do
+    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    sigh
+    gym(scheme: "HelloCordova", configuration: "Debug", project: "platforms/ios/HelloCordova.xcodeproj")
+  end
+
+  desc "Build and distribute build to Crashlytics"
+  lane :beta do
+    crashlytics(crashlytics_path: "./Crashlytics.framework/")
+  end
+end
+
+platform :android do
+  APK_PATH = "./platforms/android/build/outputs/apk/android-debug.apk"
+  CRASHLYTICS_PATH = "./platforms/android/libs/crashlytics.jar"
+  desc "Submit a new Beta Build to Crashlytics Beta"
+    lane :beta do
+	    crashlytics(
+        api_token: "2167b6ba5a768b7736f5b1cbd3b1d914d603786d",
+        build_secret: "c66bc27a21fc1c7addd90aa06a2ff35877e9508583efa9b8c15c380eb978d256",
+        groups: "dev-team",
+        notes_path: "./README.md",
+        ipa_path: false,
+        crashlytics_path: false,
+        apk_path: APK_PATH,
+        debug: true
+      )
+ end
+
+end
