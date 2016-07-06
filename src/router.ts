@@ -16,7 +16,7 @@ angular.module("router", ["ionic"])
       // setup an abstract state for the tabs directive
       .state("chats", {
         url: "/chats",
-        templateUrl: "templates/tabs.html",
+        templateUrl: "templates/chats.html",
         controller: DashCtrl,
         controllerAs: "$ctrl",
       });
