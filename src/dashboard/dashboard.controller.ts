@@ -1,5 +1,3 @@
-/// <reference path="../../typings/modules/firebase/index.d.ts" />
-
 export default class DashboardController {
 
   public chats: AngularFireArray;
